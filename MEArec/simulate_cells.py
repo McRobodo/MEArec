@@ -125,7 +125,8 @@ def return_bbp_cell(cell_folder, end_T, dt, start_T, verbose=False):
     if verbose:
         print("Simulating ", cell_folder)
 
-    neuron.load_mechanisms('../mods')
+    cell_folder_pathlib = Path(cell_folder)
+    neuron.load_mechanisms(str(cell_folder_pathlib.parent / 'mods'))
 
     f = open("template.hoc", 'r')
     templatename = get_templatename(f)
